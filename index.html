@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satya Sai Tutorial | Premium +2 Arts Coaching Hub</title>
+        <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div id="dynamicUserBar" class="user-status-bar">
+    Welcome Student: <b id="loggedInStudentName">NONE</b>
+    <button class="logout-btn" onclick="processLogout()">Sign Out</button>
+</div>
+
+<header>
+    <div class="logo-container">
+        <img src="IMG_20260629_134025_2.jpg" alt="Satya Sai Tutorial Logo" class="logo-img">
+    </div>
+    <h1>Satya Sai Tutorial</h1>
+    <p>Odisha CHSE Syllabus +2 Arts Specialist</p>
+    <div class="branch-badge">📍 Branches: Khallikote & Beguniapada, Ganjam</div>
+</header>
+
+<nav>
+    <button class="tab-link active" onclick="openTab(event, 'home')">Home</button>
+    <button class="tab-link" onclick="openTab(event, 'auth')">1. Sign In / OTP Verification</button>
+    <button class="tab-link" onclick="openTab(event, 'books')">2. +2 Arts Books (PDF)</button>
+    <button class="tab-link" onclick="openTab(event, 'teachers')">Teachers & Management</button>
+    <button class="tab-link" onclick="openTab(event, 'rules')">Rules & Regulations</button>
+    <button class="tab-link" onclick="openTab(event, 'payment')">3. Online Payment</button>
+</nav>
+
+<div class="container">
+
+    <div id="home" class="tab-content active">
+        <h2>Welcome to Satya Sai Tutorial Digital Portal</h2>
+        <div style="line-height: 1.8; font-size: 16px; text-align: justify; color: #333; margin-bottom: 20px;">
+            <p><strong>Satya Sai Tutorial</strong> sirph ek coaching institute nahi hai, balki Ganjam ke hazaron bacchon ke sapnon, umeedon aur unke maa-baap ke vishwas ka ek pavitra mandir hai. <strong>Saal 2014 mein apni sthapna (created) se lekar ab tak</strong>, humne shiksha ke kshetra mein ek behad bhavuk (emotional) aur gauravshali safar taye kiya hai. Khallikote aur Beguniapada ke chhote-chhote kasbon ke un mehnati students ko sahara dena hamara kartavya raha hai, jo aage badhne ka jazba to rakhte hain par sahi raste se anjaan hote hain. Humne pichle saalon mein sirph kitabi gyaan nahi banta, balki bacchon ke andar anushasan, sanskar aur <b>'Human Excellence'</b> ki buniyaad ko majboot kiya hai taaki wo har pariksha mein safal ho sakein.</p>
+            <p>Aaj hamara ye digital platform usi purane vishwas aur naye daur ki shuruat hai, jahan bache bina kisi pareshani ke ghar baithe behtareen notes aur library ka labh utha sakte hain. Hum har bache ki aankhon mein chupe sapnon ko samajhte hain aur unhe sach karne ke liye hamesha tatpar hain.</p>
+        </div>
+
+        <div class="achievement-gold-box">
+            <h4>🏆 OUR PROUD HISTORY (GAURAVSHALI ITIHAS)</h4>
+            <p style="margin: 0; font-size: 15.5px; color: #664d03; font-weight: 600; line-height: 1.6;">
+                Hamein ye batate hue behad gaurav aur khushi hoti hai ki <strong>Saal 2016 mein hamare coaching se hi District Topper student nikla tha</strong>! Ye aitihasik parinaam hamari hard-work, sahi rasta dikhane ki kshamta aur bacchon ki kadi mehnat ka saboot hai jo ab tak lagatar jaari hai.
+            </p>
+        </div>
+        
+        <div style="margin-top: 30px; background: var(--soft-rose); padding: 20px; border-radius: 8px; border-left: 5px solid var(--primary-maroon);">
+            <h4 style="color: var(--primary-maroon); margin-top:0;">🏫 Hamare Centers:</h4>
+            <ul style="margin-bottom:0;">
+                <li><strong>Khallikote Campus:</strong> Near College Road, Khallikote, Ganjam</li>
+                <li><strong>Beguniapada Campus:</strong> Main Bazar, Beguniapada, Ganjam</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="auth" class="tab-content">
+        <h2>Option 1: Real Student Authentication Gateway</h2>
+        <div class="auth-container">
+            
+            <div class="auth-card">
+                <h3>Create New Student Account</h3>
+                <form id="signupEngineForm" onsubmit="triggerOTPSending(event)">
+                    <div class="form-group">
+                        <label>Student Full Name:</label>
+                        <input type="text" id="regName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Branch:</label>
+                        <select id="regBranch" required>
+                            <option value="">--Choose Branch--</option>
+                            <option value="Khallikote">Khallikote</option>
+                            <option value="Beguniapada">Beguniapada</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Mobile / Email:</label>
+                        <input type="text" id="regUID" placeholder="Enter mobile or email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input type="password" id="regPassword" placeholder="Create strong password" required>
+                    </div>
+                    <button type="submit" class="btn">Send Account OTP</button>
+                </form>
+
+                <div id="otpVerificationModule" class="otp-block">
+                    <p style="color: #856404; font-weight: bold; margin-top:0;">🔒 OTP Code Sent to Mobile! (Use Demo OTP: 9944)</p>
+                    <input type="text" id="otpCodeInput" placeholder="Enter 4-Digit OTP" style="width: 70%; padding: 10px; margin-bottom: 15px; text-align: center; font-size: 16px; font-weight: bold; letter-spacing: 5px;"><br>
+                    <button class="btn" style="width: auto; padding: 10px 25px;" onclick="validateRegistrationOTP()">Verify & Confirm Account</button>
+                </div>
+            </div>
+            
+            <div class="auth-card">
+                <h3>Registered Student Login</h3>
+                <form onsubmit="executeLoginVerification(event)">
+                    <div class="form-group">
+                        <label>Registered Mobile / Email:</label>
+                        <input type="text" id="loginUID" placeholder="Enter mobile or email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input type="password" id="loginPassword" placeholder="Enter password" required>
+                    </div>
+                    <button type="submit" class="btn" style="background: var(--dark-charcoal);">Access Dashboard</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="books" class="tab-content">
+        <h2>Option 2: +2 Arts CHSE Odisha Books Download</h2>
+        <div class="sub-nav">
+            <button class="sub-btn active" onclick="filterBooks(event, 'all')">Sabh Books</button>
+            <button class="sub-btn" onclick="filterBooks(event, '1st')">+2 1st Year (XI)</button>
+            <button class="sub-btn" onclick="filterBooks(event, '2nd')">+2 2nd Year (XII)</button>
+        </div>
+
+        <div class="grid">
+            <div class="card book-card year-1st year-2nd">
+                <h3>Odia (Sahitya Jyoti)</h3>
+                <p style="color: #7f8c8d;">Compulsory MIL / Optional</p>
+                <a href="https://textbookbureau.odisha.gov.in/?p=report&type=2&pg=6" target="_blank" class="pdf-btn">⬇️ Download PDF</a>
+            </div>
+            <div class="card book-card year-1st year-2nd">
+                <h3>Invitation to English</h3>
+                <p style="color: #7f8c8d;">Compulsory Language</p>
+                <a href="https://textbookbureau.odisha.gov.in/?p=report&type=2&pg=6" target="_blank" class="pdf-btn">⬇️ Download PDF</a>
+            </div>
+            <div class="card book-card year-1st year-2nd">
+                <h3>Political Science</h3>
+                <p style="color: #7f8c8d;">Rajaniti Vigyan (Arts Option)</p>
+                <a href="https://textbookbureau.odisha.gov.in/?p=report&type=2&pg=6" target="_blank" class="pdf-btn">⬇️ Download PDF</a>
+            </div>
+            <div class="card book-card year-1st year-2nd">
+                <h3>History (Itihas)</h3>
+                <p style="color: #7f8c8d;">History of Odisha & World</p>
+                <a href="https://textbookbureau.odisha.gov.in/?p=report&type=2&pg=6" target="_blank" class="pdf-btn">⬇️ Download PDF</a>
+            </div>
+            <div class="card book-card year-1st year-2nd">
+                <h3>Economics (Arthaniti)</h3>
+                <p style="color: #7f8c8d;">Arts Stream Core Subject</p>
+                <a href="https://textbookbureau.odisha.gov.in/?p=report&type=2&pg=6" target="_blank" class="pdf-btn">⬇️ Download PDF</a>
+            </div>
+            <div class="card book-card year-1st year-2nd">
+                <h3>Education (Sikhya)</h3>
+                <p style="color: #7f8c8d;">Arts Optional Education Book</p>
+                <a href="https://textbookbureau.odisha.gov.in/?p=report&type=2&pg=6" target="_blank" class="pdf-btn">⬇️ Download PDF</a>
+            </div>
+            <div class="card book-card year-1st year-2nd">
+                <h3>Optional Odia</h3>
+                <p style="color: #7f8c8d;">Elective Literature Subject</p>
+                <a href="https://textbookbureau.odisha.gov.in/?p=report&type=2&pg=6" target="_blank" class="pdf-btn">⬇️ Download PDF</a>
+            </div>
+            <div class="card book-card year-1st year-2nd">
+                <h3>Optional Sanskrit</h3>
+                <p style="color: #7f8c8d;">Classical Sanskrit Elective</p>
+                <a href="https://textbookbureau.odisha.gov.in/?p=report&type=2&pg=6" target="_blank" class="pdf-btn">⬇️ Download PDF</a>
+            </div>
+            <div class="card book-card year-1st year-2nd">
+                <h3>Home Science</h3>
+                <p style="color: #7f8c8d;">Arts Home Science Elective</p>
+                <a href="https://textbookbureau.odisha.gov.in/?p=report&type=2&pg=6" target="_blank" class="pdf-btn">⬇️ Download PDF</a>
+            </div>
+            <div class="card book-card year-1st year-2nd">
+                <h3>Logic (Tarka Sastra)</h3>
+                <p style="color: #7f8c8d;">Reasoning & Logic Elective</p>
+                <a href="https://textbookbureau.odisha.gov.in/?p=report&type=2&pg=6" target="_blank" class="pdf-btn">⬇️ Download PDF</a>
+            </div>
+            <div class="card book-card year-1st year-2nd">
+                <h3>Psychology</h3>
+                <p style="color: #7f8c8d;">Manovigyan Arts Elective</p>
+                <a href="https://textbookbureau.odisha.gov.in/?p=report&type=2&pg=6" target="_blank" class="pdf-btn">⬇️ Download PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="teachers" class="tab-content">
+        <h2>Satya Sai Tutorial Faculty Members</h2>
+        <div class="sub-nav">
+            <button class="sub-btn active" onclick="filterFaculty(event, 'all')">Sabh Teachers</button>
+            <button class="sub-btn" onclick="filterFaculty(event, 'pol')">Political Science</button>
+            <button class="sub-btn" onclick="filterFaculty(event, 'eco')">Economics</button>
+            <button class="sub-btn" onclick="filterFaculty(event, 'his')">History</button>
+            <button class="sub-btn" onclick="filterFaculty(event, 'eng')">English</button>
+            <button class="sub-btn" onclick="filterFaculty(event, 'odia')">MIL / Optional Odia</button>
+            <button class="sub-btn" onclick="filterFaculty(event, 'edu')">Education</button>
+        </div>
+
+        <div class="grid">
+            <div class="card faculty-card pol">
+                <h3>Situn Sir</h3>
+                <span class="teacher-badge">Political Science</span>
+            </div>
+            <div class="card faculty-card pol">
+                <h3>Sibaram Sir</h3>
+                <span class="teacher-badge">Political Science</span>
+                <br><span class="director-badge" style="background-color: #d4edda; color: #155724; border-color: #c3e6cb;">Management</span>
+            </div>
+            <div class="card faculty-card eco">
+                <h3>Prahlaad Sir</h3>
+                <span class="teacher-badge">Economics</span>
+            </div>
+            <div class="card faculty-card eco">
+                <h3>Prashant Sir</h3>
+                <span class="teacher-badge">Economics</span>
+            </div>
+            <div class="card faculty-card his">
+                <h3>Prashant Sir</h3>
+                <span class="teacher-badge">History</span>
+                <br><span class="director-badge">Director of Coaching</span>
+            </div>
+            <div class="card faculty-card his">
+                <h3>Soumya Mam</h3>
+                <span class="teacher-badge">History</span>
+            </div>
+            <div class="card faculty-card his">
+                <h3>Sontsh Sir</h3>
+                <span class="teacher-badge">History</span>
+            </div>
+            <div class="card faculty-card his">
+                <h3>Reshma Mam</h3>
+                <span class="teacher-badge">History</span>
+            </div>
+            <div class="card faculty-card eng">
+                <h3>Chiranjeevi sir</h3>
+                <span class="teacher-badge">English</span>
+            </div>
+            <div class="card faculty-card eng">
+                <h3>Laxmi Priya Mam</h3>
+                <span class="teacher-badge">English</span>
+            </div>
+            <div class="card faculty-card eng">
+                <h3>Subhasmita Mam</h3>
+                <span class="teacher-badge">English</span>
+            </div>
+            <div class="card faculty-card odia">
+                <h3>Narendra Sir</h3>
+                <span class="teacher-badge">MIL / Optional Odia</span>
+            </div>
+            <div class="card faculty-card odia">
+                <h3>Shyaam Sundar Sir</h3>
+                <span class="teacher-badge">MIL / Optional Odia</span>
+            </div>
+            <div class="card faculty-card odia">
+                <h3>Pandit Sir</h3>
+                <span class="teacher-badge">MIL / Optional Odia</span>
+            </div>
+            <div class="card faculty-card odia">
+                <h3>Appu Sir</h3>
+                <span class="teacher-badge">MIL / Optional Odia</span>
+            </div>
+            <div class="card faculty-card edu">
+                <h3>Kuna Sir</h3>
+                <span class="teacher-badge">Education</span>
+            </div>
+            <div class="card faculty-card edu">
+                <h3>Sagar Sir</h3>
+                <span class="teacher-badge">Education</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="rules" class="tab-content">
+        <h2>Rules & Regulations - Session 2025-26</h2>
+        <div class="prospectus-flow">
+            <div class="rules-card-item">
+                <h3>1. General Rules</h3>
+                <ul>
+                    <li>A neat and clean and <b>Formal dress</b> must be worn at all time.</li>
+                    <li>Students should be <b>Polite, Punctual and Regular</b>.</li>
+                    <li>Students should complete all <b>"Home works"</b> in given time to them and attend all Tests/Exams.</li>
+                    <li>Students should reach the centre at least 5 minutes before the <b>Class Time</b> starts.</li>
+                    <li>Students should bring all <b>"Necessary Materials"</b> as for their study use (text/workbooks etc.)</li>
+                    <li>Cell Phones/Mobile should be <b>"Switched Off or Silent Mode"</b> inside the classroom.</li>
+                    <li>Parents can discuss the progress of their words every month by <b>"Prior Appointment."</b></li>
+                    <li>Any damages made by the students be chargeable as Compensation.</li>
+                </ul>
+            </div>
+            <div class="rules-card-item">
+                <h3>2. Parents Teacher Meeting</h3>
+                <p>Must Be held On <b>Last Sunday of Every Month At-11 am</b>.</p>
+            </div>
+            <div class="rules-card-item">
+                <h3>3. Discipline</h3>
+                <p>The Observance of Rules of <b>Discipline and Good Behaviour</b> Shall Be a precondition to a student's continuance in the institute.</p>
+            </div>
+            <div class="rules-card-item">
+                <h3>4. Absence</h3>
+                <p>Students must not remain absent without any <b>satisfactory Reasons</b>; in every case a letter from the parents/guardian must be submitted on the day pupil rejoins.</p>
+            </div>
+            <div class="rules-card-item">
+                <h3>5. Special classes/Extra classes</h3>
+                <ul>
+                    <li>Special Classes for Pupils, considered to be in need of <b>Extra Classes</b> are held in the Institute Premises.</li>
+                    <li>Pupils must be informed about the special classes by the <b>"Notice"</b>.</li>
+                    <li>No any extra fees will be charged for the <b>"Special or Extra Classes."</b></li>
+                </ul>
+            </div>
+            <div class="rules-card-item">
+                <h3>6. Weekly seminar classes</h3>
+                <p>Student bound to attend.</p>
+            </div>
+            <div class="rules-card-item">
+                <h3>7. Responsibility</h3>
+                <p style="font-weight: bold; color: var(--primary-maroon); font-size: 16px;">"Your Tutorial, Your Responsibility."</p>
+            </div>
+            <div class="rules-card-item">
+                <h3>8. Celebrations and Ceremonies</h3>
+                <p>Ganesh Puja, Saraswati Puja, Welcome Ceremony for the juniors and Farewell ceremony for the seniors, Independence Day, Republic Day, Teachers Day and Children's Day will be observed.</p>
+                <p style="margin-top: 10px;"><b>N.B.</b> All students must have to attend in these <b>Celebrations and Ceremonies</b> as well as co-operate us after giving their 100% efforts.</p>
+            </div>
+            <div class="rules-card-item">
+                <h3>9. Different Competitions on Memorial Days/Special Occasions</h3>
+                <ul>
+                    <li>Essay Competitions & Debate Competitions</li>
+                    <li>Song Competitions & One-act Play Competitions</li>
+                    <li>Jhoti Competitions, Mimicry, Drawing Competitions, Dance Competitions etc.</li>
+                </ul>
+            </div>
+            <div class="rules-card-item">
+                <h3>10. Different Sports and Events (On the Eve of Children's Day)</h3>
+                <p><b>Events include:</b> Cricket (Men's), Kabaddi, Khokho, Badminton, Running, Long Jump, High Jump.</p>
+            </div>
+            <div class="rules-card-item">
+                <h3>11. I.Q. Test</h3>
+                <p>An I.Q test in written will be taken on <b>2nd Saturday of every month</b>.</p>
+            </div>
+            <div class="rules-card-item">
+                <h3>12. Exam Schedule</h3>
+                <ul>
+                    <li><b>Weekly Exam</b> will be conducting every month.</li>
+                    <li><b>Objective Type Exams</b> (Will be conduct every week)</li>
+                    <li><b>Semi V.S.T Exams</b> (After complete 30% Course)</li>
+                    <li><b>7 Crash Course Exams</b> (After complete 70% course)</li>
+                    <li><b>Two V.S.T Exams</b> (After complete 100% course)</li>
+                </ul>
+            </div>
+            <div class="declaration-box">
+                <div class="declaration-text">
+                    "I hereby acknowledge that all the above rules and regulations are suitable for my bright future. If any disturbance occurs due to my actions, I will take full responsibility and no one else will be held liable."
+                </div>
+                <div class="signature-row">
+                    <div class="sig-block">Signature of the student</div>
+                    <div class="sig-block">Signature of the parents</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="payment" class="tab-content">
+        <h2>Option 3: Satya Sai Tutorial Fees Payment</h2>
+        <div style="background: #fff8f9; padding: 25px; border-radius: 8px; border: 2px dashed var(--primary-maroon);">
+            <h3 style="margin-top:0; color: var(--primary-maroon);">📋 13. Financial / Payment Structure</h3>
+            
+            <div class="form-group" style="max-width: 450px;">
+                <label for="feePurpose">Payment Purpose / Reason:</label>
+                <select id="feePurpose">
+                    <option value="Admission Fees">Admission Fees (Step-1)</option>
+                    <option value="Installment Fees">1st / Final Instalment (Step-2)</option>
+                    <option value="Exam Fees">Monthly Examination Fees</option>
+                    <option value="Other Dues">Other Coaching Dues</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="max-width: 450px; margin-bottom: 25px;">
+                <label for="customAmountInput" style="color:#e67e22;">Enter Payment Amount (₹):</label>
+                <input type="number" id="customAmountInput" value="5000" min="1" placeholder="Apni marzi se amount dalein" style="font-size:18px; font-weight:bold; border-color:#e67e22;">
+            </div>
+
+            <p style="font-weight: bold;">Direct UPI Payment Mode Active:</p>
+            <div class="payment-methods">
+                <div id="direct_upi_card" class="pay-card selected" style="border-color: var(--primary-maroon); background: var(--soft-rose);">
+                    <h4 style="color: var(--primary-maroon); margin-top:0;">📱 Direct UPI Channel</h4>
+                    <p>Payee UPI ID: <b>7735652462@ybl</b></p>
+                </div>
+            </div>
+
+            <div id="qrContainer" style="display:none; text-align:center; margin-top:20px; padding:15px; background:#fff; border:1px solid #ddd; border-radius:8px; max-width:300px; margin-left:auto; margin-right:auto;">
+                <div id="paymentCountdownClock" class="timer-badge">Session Expires in: 10:00</div>
+                <p style="font-weight:bold; font-size:14px; margin-top:0;">Scan this QR via UPI App</p>
+                <img id="upiQrImage" src="" alt="UPI QR Code" style="width:200px; height:200px; margin-bottom:10px;">
+                <p style="font-size:12px; color:#555; font-weight:bold;">Amount: ₹<span id="qrAmountText">0</span></p>
+            </div>
+
+            <div style="margin-top: 25px;" id="payButtonContainer">
+                <button class="btn" style="font-size: 18px; padding: 12px 25px;" onclick="processFinalPayment()">Proceed to Secure Pay</button>
+            </div>
+            
+            <div id="paymentSimulationZone" style="display:none; margin-top:25px; padding:20px; border:2px solid var(--accent-gold); background:#fffdf0; border-radius:12px; text-align:center;">
+                <h4 id="statusMessageTitle" class="pulsing-text" style="color:var(--primary-maroon); margin-top:0;">⏳ Verifying Transaction Security...</h4>
+                <p id="statusMessageDesc" style="font-size:14px; color:#555;">QR code verification active. Real-time status report milne tak checking lagatar chal rahi hai...</p>
+                <div id="paymentLoaderCircle" class="loader-spinner"></div>
+            </div>
+
+            <div id="receiptBoxSuccess" class="receipt-wrapper" style="border-color: var(--success-green);">
+                <div class="receipt-header">
+                    <h3 style="color: var(--success-green);">SATYA SAI TUTORIAL</h3>
+                    <p style="margin:2px 0; font-size:13px; color:#555;">Ganjam, Odisha | Fee Payment Receipt</p>
+                    <div class="success-stamp">Verified Paid ✓</div>
+                </div>
+                <div class="receipt-row"><span>Receipt No:</span><span id="rcptNoS">-</span></div>
+                <div class="receipt-row"><span>Date & Time:</span><span id="rcptDateS">-</span></div>
+                <div class="receipt-row"><span>Student Name:</span><span id="rcptStudentNameS">-</span></div>
+                <div class="receipt-row"><span>Branch Campus:</span><span id="rcptBranchS">-</span></div>
+                <div class="receipt-row"><span>Payment Purpose:</span><span id="rcptPurposeS">-</span></div>
+                <div class="receipt-row"><span>Payment Status:</span><span style="color:var(--success-green); font-weight: bold;">SUCCESSFUL</span></div>
+                <div class="receipt-total" style="background: #e8f8f5; color: var(--success-green);">
+                    <span>Total Amount Paid:</span>
+                    <span>₹<span id="rcptAmountS">0</span>/-</span>
+                </div>
+                <button class="btn" style="margin-top:20px; font-size:13px; padding:6px; background:#27ae60; border:none;" onclick="window.print()">🖨️ Print Successful Receipt</button>
+            </div>
+
+            <div id="receiptBoxCancelled" class="receipt-wrapper" style="border-color: var(--fail-red);">
+                <div class="receipt-header">
+                    <h3 style="color: var(--fail-red);">SATYA SAI TUTORIAL</h3>
+                    <p style="margin:2px 0; font-size:13px; color:#555;">Ganjam, Odisha | Failure Statement Slit</p>
+                    <div class="cancelled-stamp">Payment Failed ✗</div>
+                </div>
+                <div class="receipt-row"><span>Transaction ID:</span><span id="rcptNoC">-</span></div>
+                <div class="receipt-row"><span>Date & Time:</span><span id="rcptDateC">-</span></div>
+                <div class="receipt-row"><span>Student Name:</span><span id="rcptStudentNameC">-</span></div>
+                <div class="receipt-row"><span>Branch Campus:</span><span id="rcptBranchC">-</span></div>
+                <div class="receipt-row"><span>Payment Purpose:</span><span id="rcptPurposeC">-</span></div>
+                <div class="receipt-row"><span>Payment Status:</span><span style="color:var(--fail-red); font-weight: bold;">FAILED / CANCELLED</span></div>
+                <div class="receipt-total" style="background: #fdf2f2; color: var(--fail-red);">
+                    <span>Amount Aborted:</span>
+                    <span>₹<span id="rcptAmountC">0</span>/-</span>
+                </div>
+                <p style="font-size:12px; color:var(--fail-red); text-align:center; margin-top:10px; font-weight:600;">Reason: Wrong UPI PIN entered / Aborted by banking protocol.</p>
+                <button class="btn" style="margin-top:20px; font-size:13px; padding:6px; background:var(--fail-red); border:none;" onclick="location.reload()">🔄 Try Re-initiating Payment</button>
+            </div>
+
+            <p style="font-size: 12px; margin-top: 15px; color: #7f8c8d;">🔒 Satya Sai Tutorial Official Payment Desk</p>
+        </div>
+    </div>
+
+</div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
